@@ -4,7 +4,7 @@ import numpy as np
 
 from model import DCGAN
 from utils import pp, visualize, to_json, show_all_variables
-
+import os
 import tensorflow as tf
 
 flags = tf.app.flags
@@ -94,4 +94,5 @@ def main(_):
     visualize(sess, dcgan, FLAGS, OPTION)
 
 if __name__ == '__main__':
+  os.environ['CUDA_VISIBLE_DEVICES'] = '0'
   tf.app.run()

@@ -131,3 +131,9 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# run files
+chapter_2/cifar10_data
+chapter_2/cifar10_train
+chapter_2/read

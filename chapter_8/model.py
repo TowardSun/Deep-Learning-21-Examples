@@ -224,7 +224,7 @@ class DCGAN(object):
 
         batch_z = np.random.uniform(-1, 1, [config.batch_size, self.z_dim]) \
               .astype(np.float32)
-
+        # conditional generation for the mnist dataset
         if config.dataset == 'mnist':
           # Update D network
           _, summary_str = self.sess.run([d_optim, self.d_sum],
