@@ -67,8 +67,10 @@ def train():
     summary_op = tf.summary.merge_all()
     train_writer = tf.summary.FileWriter(checkpoints_dir, graph)
     saver = tf.train.Saver()
-
-  with tf.Session(graph=graph) as sess:
+  
+  config = tf.ConfigProto()
+  config.gpu_options.allow_growth = True
+  with tf.Session(graph=graph, config=config) as sess:
     if FLAGS.load_model is not None:
       checkpoint = tf.train.get_checkpoint_state(checkpoints_dir)
       meta_graph_path = checkpoint.model_checkpoint_path + ".meta"
@@ -131,5 +133,6 @@ def main(unused_argv):
   train()
 
 if __name__ == '__main__':
+  os.environ['CUDA_VISIBLE_DEVICES'] = '1'
   logging.basicConfig(level=logging.INFO)
   tf.app.run()
